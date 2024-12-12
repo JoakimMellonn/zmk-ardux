@@ -97,20 +97,6 @@
 // #define BIG_TRAILING_NONES NONE(0, 0, 0)
 
 /*****************************************
- * Define custom BT layer extra keys
- *
- * You can override the 2 blank keys on the BT select layer by copy/pasting the below into your keymap
- *     *before* including the ardux.dtsfile
- * Once added to your keymap you can adjust these 2 keys as you see fit
-*****************************************/
-#if !defined ARDUX_BT_TOP
-#define ARDUX_BT_TOP &out OUT_BLE
-#endif
-#if !defined ARDUX_BT_BOTTOM
-#define ARDUX_BT_BOTTOM &out OUT_USB
-#endif
-
-/*****************************************
  * Define how long it takes for the combos/holds to 'time out'
  * See documentation on "combos" for more detail
  * THE COMBO TIMEOUTS MUST BE THE SAME
@@ -208,7 +194,6 @@
 #define LAYER_ID_SYMBOLS 2
 #define LAYER_ID_PARENTHETICALS 3
 #define LAYER_ID_NAVIGATION 4
-#define LAYER_ID_BT_SEL 5
 #define LAYER_ID_CUSTOM 6
 #define LAYER_ID_BIG_SYM 7
 #define LAYER_ID_BIG_FUNCTION 8
@@ -276,8 +261,6 @@
 		combo_tab             { timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_A KEY_R KEY_T KEY_O>; bindings = <&kp TAB>; };
 		combo_space           { timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_E KEY_Y KEY_I KEY_O>; bindings = <&kp SPACE>; };
 		combo_shift           { timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_E KEY_R KEY_T KEY_S>; bindings = <&sk LSHFT>; };
-		combo_layer_bt_select { timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_A KEY_E KEY_S KEY_O>; bindings = <&tog LAYER_ID_BT_SEL>; };
-		combo_bt_clr          { timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_R KEY_Y KEY_T KEY_I>; bindings = <&bt BT_CLR>; };
 
 		combo_z         { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_A KEY_R KEY_T KEY_S>; bindings = <&kp Z>; };
 		combo_caps_lock { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO_4>; key-positions = <KEY_O KEY_I KEY_Y KEY_A>; bindings = <&kp CAPS>; };
@@ -386,16 +369,6 @@
 				&kp HOME                                            &kp UP    &kp END   &kp PG_UP
 				MIDDLE_NONES
 				&kp LEFT                                            &kp DOWN  &kp RIGHT &kp PG_DN
-				TRAILING_NONES
-			>;
-		};
-		bt {
-			display-name = "BT";
-			bindings = <
-				LEADING_NONES
-				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 ARDUX_BT_TOP
-				MIDDLE_NONES
-				&bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 ARDUX_BT_BOTTOM
 				TRAILING_NONES
 			>;
 		};
@@ -509,16 +482,6 @@
 				&kp PG_UP                                   &kp HOME  &kp UP    &kp END
 				MIDDLE_NONES
 				&kp PG_DN                                   &kp LEFT  &kp DOWN  &kp RIGHT
-				TRAILING_NONES
-			>;
-		};
-		bt {
-			display-name = "BT";
-			bindings = <
-				LEADING_NONES
-				ARDUX_BT_TOP    &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0
-				MIDDLE_NONES
-				ARDUX_BT_BOTTOM &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3
 				TRAILING_NONES
 			>;
 		};
