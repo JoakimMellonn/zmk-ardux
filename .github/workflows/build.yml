@@ -13,8 +13,6 @@ jobs:
         include:
           - board: sparkfun_pro_micro_rp2040
             shield: the_paintbrush_left
-          - board: sparkfun_pro_micro_rp2040
-            shield: the_paintbrush_right
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,10 +60,6 @@ jobs:
         run: cat -n config/ardux.dtsi
       - name: Prep artifact (ardux.dtsi)
         run: cp config/ardux.dtsi ./ardux.dtsi
-      - name: Prep artifact (ll)
-        run: ls -la build/zephyr
-      - name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-ardux.hex)
-        run: cp build/zephyr/zmk.hex ${{ matrix.shield }}-${{ matrix.board }}-zmk-ardux.hex
       - name: Prep artifact (${{ matrix.shield }}-${{ matrix.board }}-zmk-ardux.uf2)
         run: cp build/zephyr/zmk.uf2 ${{ matrix.shield }}-${{ matrix.board }}-zmk-ardux.uf2
       - name: Archive artifacts
