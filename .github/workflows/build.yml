@@ -13,6 +13,8 @@ jobs:
         include:
           - board: sparkfun_pro_micro_rp2040
             shield: the_paintbrush_left
+          - board: sparkfun_pro_micro_rp2040
+            shield: settings_reset
     steps:
       - name: Checkout
         uses: actions/checkout@v4
